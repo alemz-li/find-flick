@@ -1,5 +1,5 @@
 import "dotenv/config";
-import express, { Request, Response, NextFunction } from "express";
+import express, { Request, Response } from "express";
 import morgan from "morgan";
 import tmdbRoutes from "./routes/tmdb.routes";
 import cors from "cors";
@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use("/api/tmdb", tmdbRoutes);
 
-app.use((_req: Request, res: Response, _next: NextFunction) => {
+app.use((_req: Request, res: Response) => {
   res.status(404).json({ message: "Not Found" });
 });
 
