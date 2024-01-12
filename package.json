@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "lint": "eslint . --ext .ts",
-    "build": "npx tsc"
+    "build": "npm install && npm install --prefix client && npm run && npm run build-client && npm run build-server",
+    "build-client": "npm run build --prefix client",
+    "build-server": "npx tsc",
+    "start": "node dist/server.js"
   },
   "author": "Alejandro Meza Zamora",
   "license": "ISC",
