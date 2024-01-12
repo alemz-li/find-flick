@@ -37,7 +37,7 @@ const Movie = ({ movie }: Props) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.0 }}
-                className={`mx-auto my-8 block w-10/12 drop-shadow-xl md:max-w-lg ${
+                className={`mx-auto my-8 block w-9/12 drop-shadow-xl md:w-10/12 md:max-w-lg ${
                   movie.adult && "blur-md"
                 }`}
                 src={`${TMDB_IMAGE_URL}${movie.poster_path}`}
@@ -46,7 +46,7 @@ const Movie = ({ movie }: Props) => {
             </LazyMotion>
           )}
           <h1
-            className="mr-2 inline-block text-4xl font-semibold"
+            className="mr-2 inline-block text-2xl font-semibold md:text-4xl"
             aria-label="Movie title"
           >
             {movie.title}
@@ -60,7 +60,7 @@ const Movie = ({ movie }: Props) => {
           {movie.adult && (
             <small className="ml-2 text-xs text-slate-400">NSFW</small>
           )}
-          <p className="mb-4 text-lg">{movie.overview}</p>
+          <p className="text-md mb-4 md:text-lg">{movie.overview}</p>
         </header>
         <div className="px-6 text-zinc-400 lg:px-40" aria-label="Movie details">
           <div className="md:mb-4 md:flex md:items-center md:justify-between">

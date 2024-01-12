@@ -43,7 +43,7 @@ const HomePage = () => {
 
   return (
     <>
-      <section className="mb-8 flex flex-col items-center justify-center text-gray-300">
+      <section className="mb-4 flex flex-col items-center justify-center text-gray-300">
         {!data && (
           <div className="text-md text-center">
             <p>Got nothing to watch?</p>
