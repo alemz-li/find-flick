@@ -18,8 +18,7 @@ export const getLatest = async (_req: Request, res: Response) => {
       id: movie.id,
     });
   } catch (error) {
-    console.log(error);
-    if (error instanceof Error)
+    if (error instanceof AxiosError)
       res.status(500).json({ message: error?.message });
   }
 };
@@ -37,10 +36,14 @@ export const getMovieById = async (
 
     const movie = movieInfo(ApiResponse.data);
 
+    if (movie.adult) throw new Error("NSFW movie found");
+
     res.json(movie);
   } catch (error) {
     if (error instanceof AxiosError) {
       return res.status(404).json(null);
+    } else if (error instanceof Error) {
+      return res.status(403).json({ message: error.message });
     }
   }
 };
@@ -62,7 +65,7 @@ export const getTrendingMovies = async (
 
     res.json(ApiResponse.data.results);
   } catch (error) {
-    if (error instanceof Error) {
+    if (error instanceof AxiosError) {
       return res.status(500).json({
         message: "Internal Server Error",
       });
